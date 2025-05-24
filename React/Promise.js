@@ -17,9 +17,13 @@ const mypromise1 = new Promise(function (resolve, reject) {
 mypromise1.then(function () {
   console.log("my second Promise");
 });
-
 //Explanation: A promise has resolve and reject. Firstly My first Promise will be printed then after 1 sec My second Promise will be printed. whenever resolve() is called it means .then block will be exected. function(resolve,reject) is a callback function.
 // A callback function is a function that is passed as an argument to another function and is executed after some operation has been completed. A callback is a way to say what to do next once a task is done.
+
+
+
+
+
 
 //Example 2: Creating Promise without any variable
 new Promise(function (resolve, reject) {
@@ -31,6 +35,12 @@ new Promise(function (resolve, reject) {
 }).then(function () {
   console.log("my second Promise");
 });
+
+
+
+
+
+
 
 //Example 3: passing argument in resolve()
 const mypromise2 = new Promise(function (resolve, reject) {
@@ -45,6 +55,12 @@ mypromise2.then(function (user) {
 
 // user is a variable, so it can be of any name.
 
+
+
+
+
+
+
 //Example 4:
 const mypromise4 = new Promise(function (resolve, reject) {
   let error = false;
@@ -54,7 +70,6 @@ const mypromise4 = new Promise(function (resolve, reject) {
     reject("Error occured");
   }
 });
-
 mypromise4
   .then(function (user) {
     console.log(user); //{ name: 'Ritesh', age: 23 }
@@ -86,6 +101,13 @@ mypromise4
     console.log("Promise handled successfully");
   });
 
+
+
+
+
+
+
+
 //Example 5: Promise can also be handled by async await
 const mypromise5 = new Promise(function (resolve, reject) {
   setTimeout(function () {
@@ -108,11 +130,14 @@ async function myfunction() {
   }
 }
 myfunction();
-
 //Note: async await do not handle errors so we can use try catch block to handle errors.
 
-//Example: 6
 
+
+
+
+
+//Example: 6
 async function getMyGithubDetails() {
   try {
     const response = await fetch("https://api.github.com/users/riteshpatel");
@@ -124,7 +149,6 @@ async function getMyGithubDetails() {
   }
 }
 getMyGithubDetails();
-
 //Code is almost perfect but response.json also takes some time to exectue so we have to use await
 
 //Same example using then-catch
