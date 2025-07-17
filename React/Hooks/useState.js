@@ -84,3 +84,39 @@ It updates only the email field of the form state without overwriting the others
 
 
 Example 3: 
+ import React, { useState } from 'react';
+const items = [
+  { title: "HTML", content: "HyperText Markup Language" },
+  { title: "CSS", content: "Cascading Style Sheets" },
+  { title: "JS", content: "JavaScript" }
+];
+
+export default function App() {
+ const [openIndex, setOpenIndex] = useState(null);
+
+  const toggle = (index) => {
+    setOpenIndex(prev => (prev === index ? null : index));
+  };
+  return <>
+    {items.map((item, index) => (
+        <div key={index}>
+          <h3 onClick={() => toggle(index)}>{item.title}</h3>
+          {openIndex === index && <p>{item.content}</p>}
+        </div>
+      ))}
+     </>
+}
+
+Explanation:
+1. openIndex: Tracks which item is currently open. null means no item is open.
+2. toggle: This function handles the open/close logic: If the clicked item is already open (prev === index), 
+   then close it by setting openIndex to null. Otherwise, open the clicked item by updating openIndex to 
+   that item's index.
+3. When the title is clicked, toggle(index) runs.
+    -> If openIndex === index, that means the current item is open, so its <p> content is shown.
+    -> Otherwise, the content is hidden.
+4. index is the second parameter of the .map() function in JavaScript which starts from 0. It tells the 
+   toggle() function which item was clicked based on its index.
+5. It means HTML's index is 0, CSS's index is 1 and JS's index is 2.
+6. {openIndex === index && <p>{item.content}</p>}
+checks: is the currently open item the same as this one? If yes → show the content.
