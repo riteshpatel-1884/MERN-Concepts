@@ -49,8 +49,7 @@ export default function App() {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
   };
-
-
+        
   return <>
           <input name="name" onChange={handleChange} placeholder="Name" />
           <input name="email" onChange={handleChange} placeholder="Email" />
@@ -62,24 +61,24 @@ export default function App() {
 }
 }
 //Explanation: 
-1. const handleChange = (e) => { }: This is an event handler for the onChange event on an input.
-2. e is the event object automatically passed by React when a user types in the input.
-3. e.target refers to the input element.
-4. From the input element, we extract:
-    -> name: the name of the input field ("name", "email", or "password")
-    -> value: the current value typed in that input
-5. prev => 
-This is the functional form of updating state. It gives you the previous state to safely build the new one.
-6. { ...prev } 
-This copies the existing state object. So you don’t lose previous values like name or password when updating email.
-7. [name]: value 
-This uses computed property names (ES6 feature) to dynamically update the key based on the input's name.
-8. So for name = "email" and value = "abc@example.com", it becomes:
-   setForm(prev => ({
-            ...prev,
-            email: "abc@example.com"
-           }));
-It updates only the email field of the form state without overwriting the others.
+// 1. const handleChange = (e) => { }: This is an event handler for the onChange event on an input.
+// 2. e is the event object automatically passed by React when a user types in the input.
+// 3. e.target refers to the input element.
+// 4. From the input element, we extract:
+//     -> name: the name of the input field ("name", "email", or "password")
+//     -> value: the current value typed in that input
+// 5. prev => 
+// This is the functional form of updating state. It gives you the previous state to safely build the new one.
+// 6. { ...prev } 
+// This copies the existing state object. So you don’t lose previous values like name or password when updating email.
+// 7. [name]: value 
+// This uses computed property names (ES6 feature) to dynamically update the key based on the input's name.
+// 8. So for name = "email" and value = "abc@example.com", it becomes:
+//    setForm(prev => ({
+//             ...prev,
+//             email: "abc@example.com"
+//            }));
+// It updates only the email field of the form state without overwriting the others.
 
 
 
@@ -107,16 +106,16 @@ export default function App() {
      </>
 }
 
-Explanation:
-1. openIndex: Tracks which item is currently open. null means no item is open.
-2. toggle: This function handles the open/close logic: If the clicked item is already open (prev === index), 
-   then close it by setting openIndex to null. Otherwise, open the clicked item by updating openIndex to 
-   that item's index.
-3. When the title is clicked, toggle(index) runs.
-    -> If openIndex === index, that means the current item is open, so its <p> content is shown.
-    -> Otherwise, the content is hidden.
-4. index is the second parameter of the .map() function in JavaScript which starts from 0. It tells the 
-   toggle() function which item was clicked based on its index.
-5. It means HTML's index is 0, CSS's index is 1 and JS's index is 2.
-6. {openIndex === index && <p>{item.content}</p>}
-checks: is the currently open item the same as this one? If yes → show the content.
+// Explanation:
+// 1. openIndex: Tracks which item is currently open. null means no item is open.
+// 2. toggle: This function handles the open/close logic: If the clicked item is already open (prev === index), 
+//    then close it by setting openIndex to null. Otherwise, open the clicked item by updating openIndex to 
+//    that item's index.
+// 3. When the title is clicked, toggle(index) runs.
+//     -> If openIndex === index, that means the current item is open, so its <p> content is shown.
+//     -> Otherwise, the content is hidden.
+// 4. index is the second parameter of the .map() function in JavaScript which starts from 0. It tells the 
+//    toggle() function which item was clicked based on its index.
+// 5. It means HTML's index is 0, CSS's index is 1 and JS's index is 2.
+// 6. {openIndex === index && <p>{item.content}</p>}
+// checks: is the currently open item the same as this one? If yes → show the content.
