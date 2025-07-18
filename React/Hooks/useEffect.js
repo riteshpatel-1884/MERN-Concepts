@@ -78,6 +78,7 @@ function Timer() {
       clearInterval(interval);
       console.log("Timer cleaned up");
     };
+     
   }, []); // run only once when component mounts
 
   return 
@@ -89,4 +90,26 @@ export default Timer;
 
 // Explanation: When the component is removed from the screen, or before re-running this effect, cleanup function will 
 // clean up the timer. It stops the timer, preventing memory leaks or unwanted behavior if the component unmounts.
+
+
+//Example 4:
+import { useEffect, useState } from 'react';
+
+function DataFetcher() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
+  return <div>{JSON.stringify(data)}</div>;
+}
+
+//Explanation:
+// .then((res) => res.json()): converts the response into JSON format.
+// .then((data) => setData(data)): saves that data into your state variable data.
+// {JSON.stringify(data)} renders the data on the screen. It converts your JavaScript object/array into a readable 
+// string to show it inside the <div>
 
